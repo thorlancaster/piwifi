@@ -7,6 +7,7 @@ To install:
 2. If you already have hostapd or dnsmasq installed, first run `sudo apt-get purge dnsmasq hostapd` to purge the configuration files.
 2. Run `sudo apt-get install -y hostapd dnsmasq` to install the necessary dependencies.
 3. Edit `\etc\sysctl.conf` and uncomment `net.ipv4.ip_forward=1` to enable ipv4 forwarding.
+4. *Recommended:* Disable the built-in wifi on RPi3 by editing `/boot/config.txt` and adding `dtoverlay=pi3-disable-wifi`. It often causes interference.
 
 To run:
 1. `sudo java -jar \path\to\piwifi.jar`
@@ -25,5 +26,6 @@ After running the hotspot, all fields are saved in `/etc/piwifi-config`.
 ## Troubleshooting
 * Make sure that whatever interface you are using for the AP interface is Access Point capable (tested with the official RPi wifi dongle)
 * Make sure that the source interface is connected to the internet. It sometimes disconnects when the hotspot is started for the first time.
+* Unplug and replug the dongle used for wlan1 to make sure that it is actually wlan1
 * If the above does not work, feel free to post an issue.
 * Tested on a fresh install of Raspbian Jessie with a generic dongle as wlan0 and the offical Rpi dongle as wlan1.
